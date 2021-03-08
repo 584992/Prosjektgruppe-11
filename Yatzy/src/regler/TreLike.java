@@ -7,22 +7,20 @@ import java.util.ArrayList;
  * @author Emma Helland-Hansen
  *
  */
-
-public class ToLike implements IRegel {
+public class TreLike implements IRegel {
 
 	/**
 	 * 
-	 * Sjekker om terningene har to like, og returnerer poengscoren fra dette.
+	 * Sjekker om terningene har tre like, og returnerer poengscoren fra dette.
 	 * 
 	 * @param terningkast: ArrayList<Integer> over terningkastene i runden
 	 * @param rundenr:     rundenr, men brukes ikke i denne metoden.
 	 * 
-	 * @return sum av to like om finnes. Tar høyest-verdi par først. Returnerer 0 om
-	 *         ingen par.
+	 * @return sum av tre like om finnes. Tar høyest-verdi først. Returnerer 0 om
+	 *         det ikke finnes 3 av noe siffer.
 	 */
 	@Override
 	public int resolve(ArrayList<Integer> terningkast, int rundenr) {
-
 		for (int i = 6; i > 0; i--) {
 
 			// Får ikke lov til å bruke i-variabel i filter, så lager en midlertidig j.
@@ -30,8 +28,8 @@ public class ToLike implements IRegel {
 
 			int antall = (int) terningkast.stream().filter(x -> x == j).count();
 
-			if (antall >= 2) {
-				return 2 * j;
+			if (antall >= 3) {
+				return 3 * j;
 			}
 		}
 
