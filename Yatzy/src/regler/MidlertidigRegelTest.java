@@ -3,6 +3,7 @@ package regler;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -386,6 +387,22 @@ public class MidlertidigRegelTest {
 
 		regel = new Yatzy();
 		assertEquals(0, regel.resolve(terningsTrill, 15));
+	}
+	
+	@Test
+	void testRegelKlassen() {
+		Regler reglerKlasse = new Regler();
+		HashMap<Integer, IRegel> regler = reglerKlasse.getRegler();
+		
+		terningsTrill.add(3);
+		terningsTrill.add(5);
+		terningsTrill.add(5);
+		terningsTrill.add(5);
+		terningsTrill.add(5);
+		
+		assertEquals(20, regler.get(10).resolve(terningsTrill, 10));
+		
+		
 	}
 
 }
