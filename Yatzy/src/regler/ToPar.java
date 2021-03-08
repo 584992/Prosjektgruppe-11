@@ -1,6 +1,7 @@
 package regler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * 
@@ -24,31 +25,37 @@ public class ToPar implements IRegel {
 	@Override
 	public int resolve(ArrayList<Integer> terningkast, int rundenr) {
 
-		for (int i = 6; i > 0; i--) {
-			// Får ikke lov til å bruke i-variabel i filter, så lager en midlertidig j.
-			int k = i;
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 
-			int antall = (int) terningkast.stream().filter(x -> x == k).count();
-
-			if (antall >= 2) {
-				for (int j = i--; j > 0; j--) {
-
-					int l = j;
-					
-					//terningkast.stream().reduce();
-
-					int antall2 = (int) terningkast.stream().filter(x -> x == l).count();
-
-					if (antall2 >= 2) {
-						return k * 2 + l * 2;
-					}
-				}
-
-				return 0;
-			}
+		// Setter alle valusene til 0 først.
+		for (int i = 1; i < 7; i++) {
+			map.put(i, 0);
 		}
 
+		// Teller hvor mange det er av hver verdi.
+		for (int i = 0; i < 5; i++) {
+
+			int verdi = terningkast.get(i);
+			map.put(verdi, map.get(verdi) + 1);
+
+		}
+
+		// Fjerner de som har 1 eller 0.
+
+		for (int i = 6; i > 0; i--) {
+			map.remove(i, 1);
+			map.remove(i, 0);
+
+		}
+		// Sjekker om det er to elementer igjen, isåfall returnerer summen av disse. 
+		if (map.size() == 2) {
+			return map.keySet().stream().map(x -> x * 2).mapToInt(Integer::valueOf).sum();
+		}
+		
+		// Ellers returnerer 0. 
+
 		return 0;
+
 	}
 
 }

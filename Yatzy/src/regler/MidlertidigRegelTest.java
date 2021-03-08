@@ -304,7 +304,44 @@ public class MidlertidigRegelTest {
 		regel = new StorStraight();
 		assertEquals(0, regel.resolve(terningsTrill, 12));
 	}
+	
+	@Test
+	void harHus() {
+		// Legger til to 3-ere og tre 4-ere og sjekker at summen er 18.
+		terningsTrill.add(3);
+		terningsTrill.add(3);
+		terningsTrill.add(4);
+		terningsTrill.add(4);
+		terningsTrill.add(4);
+		regel = new Hus();
+		assertEquals(18, regel.resolve(terningsTrill, 13));
+		
+	}
+	
+	void harIkkeHusMenToPar() {
+		// Legger til to 3-ere og to 4-ere og sjekker at man får 0 poeng.
+		terningsTrill.add(3);
+		terningsTrill.add(3);
+		terningsTrill.add(4);
+		terningsTrill.add(4);
+		terningsTrill.add(1);
+		regel = new Hus();
+		assertEquals(0, regel.resolve(terningsTrill, 13));
+		
+	}
 
+	void harIkkeHus() {
+		// Legger til forskjellige verdier som ikke gir hus.
+		terningsTrill.add(3);
+		terningsTrill.add(2);
+		terningsTrill.add(1);
+		terningsTrill.add(4);
+		terningsTrill.add(1);
+		regel = new Hus();
+		assertEquals(0, regel.resolve(terningsTrill, 13));
+		
+	}
+	
 	@Test
 	void sjanseRiktigSum() {
 
