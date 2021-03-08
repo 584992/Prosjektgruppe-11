@@ -4,5 +4,7 @@ public class Regler {
 	
 	
 	// dette er comitt test Regine
+	
+	// Dette er commit-test #Emma
 
 }
