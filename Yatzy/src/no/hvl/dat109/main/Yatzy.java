@@ -56,6 +56,7 @@ public class Yatzy {
 				e.printStackTrace();
 			}
 
+
 			if (i == 6) {
 
 				System.out.println("Får" + spiller + " bonus?");
@@ -63,6 +64,8 @@ public class Yatzy {
 						+ new Bonuspoeng().resolve(terningSummer, -1) + " bonuspoeng!");
 
 			}
+			
+			terningTrill.clear();
 
 		}
 
