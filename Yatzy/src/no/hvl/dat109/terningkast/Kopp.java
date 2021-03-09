@@ -11,7 +11,8 @@ import java.util.List;
  */
 public class Kopp {
 	
-	private Terning[] terninger = new Terning[5];
+	private List<Terning> terninger = new  ArrayList<Terning>();
+
 	
 	/**
 	 * Triller terningene (5stk)
@@ -20,7 +21,7 @@ public class Kopp {
 		int i = 0;
 		while (i<5) {
 			Terning terningKast = new Terning(Terning.trill()); 
-			terninger[i] = terningKast;
+			terninger.add(terningKast);
 			i++;
 		}
 	}
@@ -34,7 +35,7 @@ public class Kopp {
 		String terningkast  = "";
 		int i = 0;
 		while (i < 5) {
-			terningkast += "Terning " + (i+1) +  ": " + terninger[i].getTall() + "\n";
+			terningkast += "Terning " + (i+1) +  ": " + terninger.get(i) + "\n";
 			i++;
 		}
 		return terningkast;
@@ -42,11 +43,11 @@ public class Kopp {
 
 
 	/**
-	 * Henter terningkastene i form av tabell
+	 * Henter terningkastene i form av Array
 	 * Brukes for eventuelle metoder
 	 * @return
 	 */
-	public Terning[] getTerningKastTabell() {
+	public List<Terning> getTerningKastArrayList() {
 		return terninger;
 	}
 	
