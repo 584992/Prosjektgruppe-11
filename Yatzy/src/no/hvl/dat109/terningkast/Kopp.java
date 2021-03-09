@@ -27,7 +27,7 @@ public class Kopp {
 	
 	/**
 	 * Henter terningskastene i form av String
-	 * Brukes for mottakeren
+	 * Brukes for mottakeren hei
 	 * @return
 	 */
 	public String getTerningKastString() {
