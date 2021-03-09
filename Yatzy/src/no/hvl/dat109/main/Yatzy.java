@@ -33,12 +33,12 @@ public class Yatzy {
 				terningTrill.add(rand.nextInt(6) + 1);
 			}
 
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			System.out.println("Triller: " + terningTrill.toString() + ".");
 			int sum = regler.get(i).resolve(terningTrill, i);
@@ -47,12 +47,12 @@ public class Yatzy {
 
 			System.out.println("Sum blir..: " + i + "!");
 
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			if (i == 6) {
 
