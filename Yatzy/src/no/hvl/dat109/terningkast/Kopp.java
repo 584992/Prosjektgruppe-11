@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 
  * @author vilde
  *
  */
@@ -13,7 +12,6 @@ public class Kopp {
 	
 	private List<Terning> terninger = new  ArrayList<Terning>();
 
-	
 	/**
 	 * Triller terningene (5stk)
 	 */
