@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import no.hvl.dat109.terningkast.Kopp;
+import no.hvl.dat109.terningkast.Terning;
 import regler.Bonuspoeng;
 import regler.IRegel;
 import regler.Regler;
@@ -14,7 +16,7 @@ public class Yatzy {
 	// Bare litt rask testing
 
 	public static void main(String[] args) {
-
+		
 		String spiller = "Emma";
 
 		ArrayList<Integer> terningSummer = new ArrayList<Integer>();

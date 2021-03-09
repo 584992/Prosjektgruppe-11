@@ -3,6 +3,9 @@ package no.hvl.dat109.terningkast;
 public class Terning {
 	
 private int tall;
+
+	public Terning() {
+	}
 	
 	public Terning(int tall) {
 		this.tall = tall;
@@ -16,7 +19,7 @@ private int tall;
 		this.tall = tall;
 	}
 
-	public int trill() {
+	public static int trill() {
 		int tall = (int)(Math.random() *6)+1;
 		return tall;
 	}	
