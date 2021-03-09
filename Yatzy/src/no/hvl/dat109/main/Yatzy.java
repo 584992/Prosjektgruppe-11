@@ -47,7 +47,7 @@ public class Yatzy {
 			terningSummer.add(i);
 			totalsum += sum;
 
-			System.out.println("Sum blir..: " + i + "!");
+			System.out.println("Sum blir..: " + sum + "!");
 
 			try {
 				Thread.sleep(2000);
