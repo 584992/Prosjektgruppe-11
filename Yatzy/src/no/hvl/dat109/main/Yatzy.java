@@ -2,105 +2,135 @@ package no.hvl.dat109.main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
+import java.util.List;
+import java.util.Scanner;
 
-import no.hvl.dat109.terningkast.Kopp;
-import no.hvl.dat109.terningkast.Terning;
-import regler.Bonuspoeng;
+import no.hvl.dat109.spiller.Spiller;
 import regler.IRegel;
 import regler.Regler;
-import regler.TotalPoengsum;
 
+/**
+ * Hovedklasse som starter spillet
+ *
+ * Antar at spillet er tvunget yatzy i første omgang hvertfall
+ *
+ * @author Anne og Thea
+ *
+ */
 public class Yatzy {
+	/**
+	 * Objektvariabler
+	 */
+	private static final int MAKS_ANTALL_RUNDER = 15; // Ut fra et vanlig yatzy brett
+	private static int rundenr = 1;
+	private static int antallSpillere;
+	private static Regler reg = new Regler();
+	private static HashMap<Integer, IRegel> regler = reg.getRegler();
+	private static List<Spiller> spillere = new ArrayList<Spiller>();
 
-	// Bare slett om det er i veien, var bare for egen testing :--)
 
 	public static void main(String[] args) {
+		startSpill();
+		System.out.println("SPILLET ER SLUTT");
+//		String spiller = "Emma";
+//
+//		ArrayList<Integer> terningSummer = new ArrayList<Integer>();
+//		ArrayList<Integer> terningTrill = new ArrayList<Integer>();
+//		Random rand = new Random();
+//		HashMap<Integer, IRegel> regler = new Regler().getRegler();
+//
+//		int totalsum = 0;
+//
+//		for (int i = 1; i < 16; i++) {
+//
+//			System.out.println("Runde " + i + "!");
+//			System.out.println(regler.get(i).getClass().getSimpleName());
+//
+//			for (int j = 0; j < 5; j++) {
+//				terningTrill.add(rand.nextInt(6) + 1);
+//			}
+//
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//			System.out.println("Triller: " + terningTrill.toString() + ".");
+//			int sum = regler.get(i).resolve(terningTrill, i);
+//			terningSummer.add(i);
+//			totalsum += sum;
+//
+//			System.out.println("Sum blir..: " + sum + "!");
+//
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//
+//			if (i == 6) {
+//
+//				System.out.println("F�r" + spiller + " bonus?");
+//				System.out.println(spiller + " har fra f�r av " + totalsum + " poeng, og f�r "
+//						+ new Bonuspoeng().resolve(terningSummer, -1) + " bonuspoeng!");
+//
+//			}
+//
+//			terningTrill.clear();
+//
+//		}
+//
+//		System.out.println(spiller + " f�r tilsammen " + new TotalPoengsum().resolve(terningSummer, 15));
+//		System.out.println("Godt jobbet, " + spiller + "!");
 
-		final int SLEEPTIME = 100;
+	}
 
-		ArrayList<String> spillere = new ArrayList<String>();
-		spillere.add("Emma");
-		spillere.add("Regine");
-		spillere.add("Vilde");
-		spillere.add("Magnus");
+	private static void startSpill() {
+		Scanner sc = new Scanner(System.in);
 
-		HashMap<String, ArrayList<Integer>> terningSummer = new HashMap<String, ArrayList<Integer>>();
-		ArrayList<Integer> terningTrill = new ArrayList<Integer>();
-		Random rand = new Random();
-		HashMap<Integer, IRegel> regler = new Regler().getRegler();
-
-		HashMap<String, Integer> totalsum = new HashMap<String, Integer>();
-		int sum = 0;
-
-		for (String spiller : spillere) {
-			
-			terningSummer.put(spiller, new ArrayList<Integer>());
-			totalsum.put(spiller, 0);
+		// Be om antall spillere:
+		System.out.println("Hvor mange skal spille? (Fra 1 til 6 personer)");
+		antallSpillere = sc.nextInt();
+		while (antallSpillere < 1 || antallSpillere > 6) {
+			System.out.println("Ugyldig antall spillere! Må være fra 1 til 6");
+			antallSpillere = sc.nextInt();
 		}
-		
-		
 
-		for (int i = 1; i < 16; i++) {
+		// Få informasjon om alle spillerene
+		for (int i = 0; i < antallSpillere; i++) {
+			System.out.println("Spiller navn: ");
+			String navn = sc.next();
+			spillere.add(new Spiller());//sc.next())); // Antar at dette er en konstruktør
+			// Spør om eventuelt mer informasjon som er nødvendig for å opprette spiller objekt
+		}
 
-			System.out.print("\n\nRunde " + i + ", ");
-			System.out.println(regler.get(i).getClass().getSimpleName() + "\n");
+		sc.close();
 
-			for (String spiller : spillere) {
+		// Starter rundene
+		while (rundenr <= MAKS_ANTALL_RUNDER) {
+			System.out.println("RUNDE NUMMER: " + rundenr);
+			for (Spiller s : spillere) {
+				// Triller:
+				// for (int i = 0; i < 3; i++)
+				// 		Kopp k = s.trill(); 	--> Regner med dette blir en metode i Spiller klassen
 
-				System.out.println("\n" + spiller + " sin tur!\n");
+				// Første runde bare:
+				IRegel regel = regler.get(rundenr);
+				//int resultat = regel.resolve(terningkast, rundenr);
 
-				for (int l = 0; l < 3; l++) {
-					terningTrill.clear();
-					for (int j = 0; j < 5; j++) {
-						terningTrill.add(rand.nextInt(6) + 1);
-					}
-					System.out.println("Triller " + (l+1) +" gang: " + terningTrill.toString() + ".");
-					sum = regler.get(i).resolve(terningTrill, i);
-					if(sum!=0) {
-						break;
-					}
-					
-				}
+				// HashMap: lagre resultat i Spiller
 
-				try {
-					Thread.sleep(SLEEPTIME);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 
-				
-				terningSummer.get(spiller).add(sum);
-				totalsum.put(spiller, totalsum.get(spiller) + sum);
-
-				System.out.println("\nSum blir..: " + sum + "!");
-
-				try {
-					Thread.sleep(SLEEPTIME);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				if (i == 6) {
-
-					System.out.println("F�r " + spiller + " bonus?");
-					System.out.println(spiller + " har fra f�r av " + totalsum.get(spiller) + " poeng, og f�r "
-							+ new Bonuspoeng().resolve(terningSummer.get(spiller), -1) + " bonuspoeng!");
-
-				}
+				rundenr++;
 			}
 		}
 
-		System.out.println("\n");
-		for (String spiller : spillere) {
-
-			System.out.println(
-					"\n" + spiller + " f�r tilsammen " + new TotalPoengsum().resolve(terningSummer.get(spiller), 15) + " poeng.");
-			System.out.println("Godt jobbet, " + spiller + "!");
-		}
-
+		// sysout: spiller + totalsum
+		// sysout: hvem som vant
 	}
 
 }
