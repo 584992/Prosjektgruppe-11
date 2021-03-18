@@ -16,6 +16,8 @@ public class Regler {
 			regler.put(i, new RundeEnTilSeks(i));
 		}
 		
+		// Resten av rundene
+		
 		regler.put(7, new EttPar());
 		regler.put(8, new ToPar());
 		regler.put(9, new TreLike());

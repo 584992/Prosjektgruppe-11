@@ -28,8 +28,8 @@ public class ToPar implements IRegel {
 
 		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 
-		// Setter alle valusene til 0 først.
-		for (int i = 1; i < 7; i++) {
+		// Setter alle verdiene til 0 først.
+		for (int i = 1; i <= 6; i++) {
 			map.put(i, 0);
 		}
 

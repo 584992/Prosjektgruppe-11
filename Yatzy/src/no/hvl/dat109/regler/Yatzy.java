@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  */
 public class Yatzy implements IRegel {
-	
+
 	String navn = "yatzy";
 
 	/**
@@ -24,17 +24,17 @@ public class Yatzy implements IRegel {
 	@Override
 	public int resolve(ArrayList<Integer> terningkast) {
 
-		for (int i = 1; i < 7; i++) {
+		for (int i = 1; i <= 6; i++) {
 			int j = i;
 
 			if (terningkast.stream().allMatch(x -> x == j)) {
 				return 50;
 			}
-
 		}
 
 		return 0;
 	}
+
 	public String getNavn() {
 		return navn;
 	}

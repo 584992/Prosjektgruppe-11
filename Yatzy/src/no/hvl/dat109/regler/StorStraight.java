@@ -19,7 +19,7 @@ public class StorStraight implements IRegel {
 	 */
 	@Override
 	public int resolve(ArrayList<Integer> terningkast) {
-		for(int i = 2; i < 7; i++) {
+		for(int i = 2; i <= 6; i++) {
 			if(!terningkast.contains(i)) {
 				return 0;
 			}

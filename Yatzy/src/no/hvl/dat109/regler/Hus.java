@@ -14,7 +14,7 @@ public class Hus implements IRegel {
 
 	/**
 	 * Metoden sjekker om det finnes et hus i listen over terningskast, og
-	 * returnerer poengsum basert på dette. Et hus er tre like + 2 like.
+	 * returnerer poengsum basert på dette. Et hus er 3 like + 2 like.
 	 * 
 	 * @param terningkast: ArrayList<Integer> liste over terningkast som vi leter
 	 *                     etter to par i.
@@ -31,8 +31,8 @@ public class Hus implements IRegel {
 		
 		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 
-		// Setter alle valusene til 0 først.
-		for (int i = 1; i < 7; i++) {
+		// Setter alle verdiene til 0 først.
+		for (int i = 1; i <= 6; i++) {
 			map.put(i, 0);
 		}
 
@@ -51,7 +51,7 @@ public class Hus implements IRegel {
 		
 		// Finner hvilke verdier som har tre og to, og returnerer summen av disse. 
 		
-		for(int i = 1; i < 7; i++) {
+		for(int i = 1; i <= 6; i++) {
 			if(map.get(i) == 3) {
 				treLike = i;
 			}

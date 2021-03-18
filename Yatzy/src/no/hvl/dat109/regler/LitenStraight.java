@@ -19,7 +19,7 @@ public class LitenStraight implements IRegel{
 	 */
 	@Override
 	public int resolve(ArrayList<Integer> terningkast) {
-		for(int i = 1; i < 6; i++) {
+		for(int i = 1; i <= 5 ; i++) {
 			if(!terningkast.contains(i)) {
 				return 0;
 			}

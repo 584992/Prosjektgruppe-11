@@ -66,7 +66,7 @@ public class Yatzy {
 
 				// Første runde bare:
 				IRegel regel = regler.get(rundenr);
-				//int resultat = regel.resolve(terningkast, rundenr);
+				//int resultat = regel.resolve(terningkast);
 
 				// HashMap: lagre resultat i Spiller
 				
