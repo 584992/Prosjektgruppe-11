@@ -123,10 +123,23 @@ public class Yatzy {
 				//int resultat = regel.resolve(terningkast, rundenr);
 
 				// HashMap: lagre resultat i Spiller
+				
+				// Når trillingen og det er ferdig
+				// Så må vi beregne summen og bonus
+				if (rundenr == 6) {
+					// beregn sum til spilleren
+					// beregn bonus til spilleren
+				}
 
-
-				rundenr++;
 			}
+			if (rundenr == 6) {
+				// skriver ut poengsummene til hver spiller
+				// og om de da får bonus
+				for (Spiller s : spillere) {
+					//System.out.println(s.getNavn() + " sin poengsum er: " + s.getSum() + " -> Bonuspoeng: " + s.bonuspoeng());
+				}
+			}
+			rundenr++;
 		}
 
 		// sysout: spiller + totalsum
