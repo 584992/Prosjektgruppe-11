@@ -11,6 +11,8 @@ import java.util.HashMap;
 
 public class ToPar implements IRegel {
 
+	String navn = "to par";
+	
 	/**
 	 * Metoden sjekker om det finnes to par i listen over terningskast, og
 	 * returnerer poengsum basert på dette.
@@ -55,6 +57,10 @@ public class ToPar implements IRegel {
 
 		return 0;
 
+	}
+	
+	public String getNavn() {
+		return navn;
 	}
 
 }

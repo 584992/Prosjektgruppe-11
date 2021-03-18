@@ -9,6 +9,8 @@ import java.util.ArrayList;
  */
 public class TreLike implements IRegel {
 
+	String navn = "tre like";
+	
 	/**
 	 * 
 	 * Sjekker om terningene har tre like, og returnerer poengscoren fra dette.
@@ -35,4 +37,7 @@ public class TreLike implements IRegel {
 		return 0;
 	}
 
+	public String getNavn() {
+		return navn;
+	}
 }

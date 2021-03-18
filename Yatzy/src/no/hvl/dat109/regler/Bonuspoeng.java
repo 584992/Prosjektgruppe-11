@@ -8,6 +8,8 @@ import java.util.ArrayList;
  *
  */
 public class Bonuspoeng implements IRegel {
+	
+	String navn = "bonuspoeng";
 
 	/**
 	 * 
@@ -27,4 +29,7 @@ public class Bonuspoeng implements IRegel {
 
 	}
 
+	public String getNavn() {
+		return navn;
+	}
 }

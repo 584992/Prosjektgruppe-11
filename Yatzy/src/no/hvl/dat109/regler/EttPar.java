@@ -9,6 +9,8 @@ import java.util.ArrayList;
  */
 
 public class EttPar implements IRegel {
+	
+	String navn = "ett par";
 
 	/**
 	 * 
@@ -35,6 +37,10 @@ public class EttPar implements IRegel {
 		}
 
 		return 0;
+	}
+	
+	public String getNavn() {
+		return navn;
 	}
 
 }

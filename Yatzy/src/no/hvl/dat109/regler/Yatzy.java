@@ -8,6 +8,8 @@ import java.util.ArrayList;
  *
  */
 public class Yatzy implements IRegel {
+	
+	String navn = "yatzy";
 
 	/**
 	 * Sjekker at alle 5 terningene har samme verdi. Gir poeng om alle er like, og
@@ -32,6 +34,9 @@ public class Yatzy implements IRegel {
 		}
 
 		return 0;
+	}
+	public String getNavn() {
+		return navn;
 	}
 
 }

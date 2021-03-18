@@ -8,6 +8,8 @@ import java.util.ArrayList;
  *
  */
 public class StorStraight implements IRegel {
+	
+	String navn = "stor straight";
 
 	/**
 	 * Sjekker om terningkastet har alle verdiene som trengs for stor straight (2-6). 
@@ -24,6 +26,10 @@ public class StorStraight implements IRegel {
 		}
 		
 		return 20;
+	}
+	
+	public String getNavn() {
+		return navn;
 	}
 
 }

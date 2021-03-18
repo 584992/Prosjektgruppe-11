@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class TotalPoengsum implements IRegel {
 	
+	String navn = "total poengsum";
+	
 	/**
 	 * Regner ut totalpoengsum
 	 * 
@@ -20,4 +22,8 @@ public class TotalPoengsum implements IRegel {
 		return tidligerePoengsum.stream().mapToInt(Integer::valueOf).sum();
 	}
 
+	public String getNavn() {
+		return navn;
+	}
+	
 }

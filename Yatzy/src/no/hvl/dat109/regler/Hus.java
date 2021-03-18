@@ -9,6 +9,8 @@ import java.util.HashMap;
  *
  */
 public class Hus implements IRegel {
+	
+	String navn = "hus";
 
 	/**
 	 * Metoden sjekker om det finnes et hus i listen over terningskast, og
@@ -58,6 +60,10 @@ public class Hus implements IRegel {
 			}
 		}
 		return treLike*3 + toLike*2;
+	}
+	
+	public String getNavn() {
+		return navn;
 	}
 
 }

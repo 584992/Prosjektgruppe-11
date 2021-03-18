@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class LitenStraight implements IRegel{
 
+	String navn ="liten straight";
 	
 	/**
 	 * Sjekker om terningkastet har alle verdiene som trengs for liten straight (1-5). 
@@ -27,4 +28,7 @@ public class LitenStraight implements IRegel{
 		return 15;
 	}
 
+	public String getNavn() {
+		return navn;
+	}
 }

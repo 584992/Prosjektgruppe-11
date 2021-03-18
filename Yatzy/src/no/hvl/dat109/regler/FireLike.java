@@ -8,6 +8,8 @@ import java.util.ArrayList;
  *
  */
 public class FireLike implements IRegel{
+	
+	String navn = "fire like";
 
 	/**
 	 * 
@@ -36,4 +38,7 @@ public class FireLike implements IRegel{
 		return 0;
 	}
 
+	public String getNavn() {
+		return navn;
+	}
 }

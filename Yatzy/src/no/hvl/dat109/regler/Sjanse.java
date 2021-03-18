@@ -8,6 +8,8 @@ import java.util.ArrayList;
  *
  */
 public class Sjanse implements IRegel{
+	
+	String navn = "sjanse";
 
 	/**
 	 * Sjanse summerer alle terningsverdiene og returnerer summen.
@@ -21,6 +23,10 @@ public class Sjanse implements IRegel{
 	public int resolve(ArrayList<Integer> terningkast) {
 		return terningkast.stream().mapToInt(Integer::valueOf).sum();
 		
+	}
+	
+	public String getNavn() {
+		return navn;
 	}
 
 }
