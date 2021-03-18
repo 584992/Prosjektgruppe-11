@@ -1,4 +1,4 @@
-package regler;
+package no.hvl.dat109.regler;
 
 import java.util.HashMap;
 
@@ -10,12 +10,11 @@ public class Regler {
 	
 		regler = new HashMap<Integer, IRegel>();
 		
-		regler.put(1, new RundeEnTilSeks());
-		regler.put(2, new RundeEnTilSeks());
-		regler.put(3, new RundeEnTilSeks());
-		regler.put(4, new RundeEnTilSeks());
-		regler.put(5, new RundeEnTilSeks());
-		regler.put(6, new RundeEnTilSeks());
+		// For-løkke for runde en til seks.
+		
+		for(int i = 1; i <= 6; i++) {
+			regler.put(i, new RundeEnTilSeks(i));
+		}
 		
 		regler.put(7, new EttPar());
 		regler.put(8, new ToPar());

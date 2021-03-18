@@ -1,4 +1,4 @@
-package regler;
+package no.hvl.dat109.regler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,14 +16,13 @@ public class Hus implements IRegel {
 	 * 
 	 * @param terningkast: ArrayList<Integer> liste over terningkast som vi leter
 	 *                     etter to par i.
-	 * @param rundenr:     brukes ikke i denne metoden.
 	 * 
 	 * @return poengsum : 0 om det ikke finnes hus , ellers summen av verdien til
 	 *         terningene i huset.
 	 */
 
 	@Override
-	public int resolve(ArrayList<Integer> terningkast, int rundenr) {
+	public int resolve(ArrayList<Integer> terningkast) {
 		
 		int treLike = 0;
 		int toLike = 0;

@@ -1,4 +1,4 @@
-package regler;
+package no.hvl.dat109.regler;
 
 import java.util.ArrayList;
 
@@ -12,14 +12,13 @@ public class Sjanse implements IRegel{
 	/**
 	 * Sjanse summerer alle terningsverdiene og returnerer summen.
 	 * @param terningkast: ArrayList<Integer> som er en liste over terningene.
-	 * @param rundenr: Brukes ikke i denne metoden.
 	 * 
 	 * @return sum av alle terningene.
 	 * 
 	 */
 	
 	@Override
-	public int resolve(ArrayList<Integer> terningkast, int rundenr) {
+	public int resolve(ArrayList<Integer> terningkast) {
 		return terningkast.stream().mapToInt(Integer::valueOf).sum();
 		
 	}

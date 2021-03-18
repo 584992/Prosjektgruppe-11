@@ -1,10 +1,11 @@
-package regler;
+package no.hvl.dat109.regler;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -15,6 +16,7 @@ public class MidlertidigRegelTest {
 
 	ArrayList<Integer> terningsTrill;
 	ArrayList<Integer> tidligereResultater;
+	HashMap<Integer, IRegel> regler;
 
 	IRegel regel;
 
@@ -23,6 +25,14 @@ public class MidlertidigRegelTest {
 	private int e2;
 	private int e3;
 	private int e4;
+	
+	@BeforeAll
+	void start() {
+		
+		Regler r = new Regler();
+		regler = r.getRegler();
+		
+	}
 
 	@BeforeEach
 	void setup() {
@@ -32,6 +42,8 @@ public class MidlertidigRegelTest {
 
 	}
 
+	// Tester for runde 1-6 (trille terninger for en gitt verdi) 
+	
 	@Test
 	void riktigSum1ere() {
 
@@ -43,8 +55,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(1);
 		terningsTrill.add(5);
 
-		regel = new RundeEnTilSeks();
-		assertEquals(2, regel.resolve(terningsTrill, 1));
+		assertEquals(2, regler.get(1).resolve(terningsTrill));
 
 	}
 
@@ -59,10 +70,11 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(1);
 		terningsTrill.add(5);
 
-		regel = new RundeEnTilSeks();
-		assertEquals(0, regel.resolve(terningsTrill, 6));
+		assertEquals(0, regler.get(6).resolve(terningsTrill));
 	}
 
+	//Tester for å sjekke om man får bonuspoeng eller ei
+	
 	@Test
 	void ingenBonusPoeng() {
 
@@ -76,7 +88,8 @@ public class MidlertidigRegelTest {
 		tidligereResultater.add(20);
 		tidligereResultater.add(5);
 		tidligereResultater.add(0);
-		assertEquals(0, regel.resolve(tidligereResultater, -1));
+		
+		assertEquals(0, regel.resolve(tidligereResultater));
 	}
 
 	@Test
@@ -93,8 +106,10 @@ public class MidlertidigRegelTest {
 
 		regel = new Bonuspoeng();
 
-		assertEquals(50, regel.resolve(tidligereResultater, -1));
+		assertEquals(50, regel.resolve(tidligereResultater));
 	}
+	
+	// Tester for ett par
 
 	@Test
 	void harEttPar() {
@@ -108,7 +123,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(3);
 
 		regel = new EttPar();
-		assertEquals(6, regel.resolve(terningsTrill, 7));
+		assertEquals(6, regel.resolve(terningsTrill));
 	}
 
 	@Test
@@ -123,9 +138,26 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 
 		regel = new EttPar();
-		assertEquals(0, regel.resolve(terningsTrill, 7));
+		assertEquals(0, regel.resolve(terningsTrill));
+	}
+	
+	@Test
+	void EttPar6ParIkke4Par() {
+		// Legger til par i både 6 og 4, og sjekker at summen blir 6*2 = 12.
+		// Høyere poengsum skal velges over lavere poengsum.
+
+		terningsTrill.add(4);
+		terningsTrill.add(6);
+		terningsTrill.add(6);
+		terningsTrill.add(1);
+		terningsTrill.add(4);
+
+		regel = new EttPar();
+		assertEquals(12, regel.resolve(terningsTrill));
 	}
 
+	// Tester for to par
+	
 	@Test
 	void harToPar() {
 
@@ -137,7 +169,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 
 		regel = new ToPar();
-		assertEquals(18, regel.resolve(terningsTrill, 8));
+		assertEquals(18, regel.resolve(terningsTrill));
 
 	}
 	
@@ -152,7 +184,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 
 		regel = new ToPar();
-		assertEquals(0, regel.resolve(terningsTrill, 8));
+		assertEquals(0, regel.resolve(terningsTrill));
 
 	}
 	
@@ -167,24 +199,11 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 
 		regel = new ToPar();
-		assertEquals(0, regel.resolve(terningsTrill, 8));
+		assertEquals(0, regel.resolve(terningsTrill));
 
 	}
 
-	@Test
-	void EttPar6ParIkke4Par() {
-		// Legger til par i både 6 og 4, og sjekker at summen blir 6*2 = 12.
-		// Høyere poengsum skal velges over lavere poengsum.
-
-		terningsTrill.add(4);
-		terningsTrill.add(6);
-		terningsTrill.add(6);
-		terningsTrill.add(1);
-		terningsTrill.add(4);
-
-		regel = new EttPar();
-		assertEquals(12, regel.resolve(terningsTrill, 7));
-	}
+	// Tester for tre like
 
 	@Test
 	void harTreLike() {
@@ -198,7 +217,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(2);
 
 		regel = new TreLike();
-		assertEquals(6, regel.resolve(terningsTrill, 9));
+		assertEquals(6, regel.resolve(terningsTrill));
 	}
 
 	@Test
@@ -213,9 +232,11 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 
 		regel = new TreLike();
-		assertEquals(0, regel.resolve(terningsTrill, 9));
+		assertEquals(0, regel.resolve(terningsTrill));
 	}
 
+	// Tester for fire like
+	
 	@Test
 	void harFireLike() {
 
@@ -228,7 +249,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 
 		regel = new FireLike();
-		assertEquals(16, regel.resolve(terningsTrill, 10));
+		assertEquals(16, regel.resolve(terningsTrill));
 	}
 
 	@Test
@@ -243,9 +264,11 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 
 		regel = new FireLike();
-		assertEquals(0, regel.resolve(terningsTrill, 10));
+		assertEquals(0, regel.resolve(terningsTrill));
 	}
 
+	// Tester for liten straight
+	
 	@Test
 	void harLitenStraight() {
 
@@ -258,7 +281,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(5);
 
 		regel = new LitenStraight();
-		assertEquals(15, regel.resolve(terningsTrill, 11));
+		assertEquals(15, regel.resolve(terningsTrill));
 	}
 
 	@Test
@@ -273,9 +296,11 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 
 		regel = new LitenStraight();
-		assertEquals(0, regel.resolve(terningsTrill, 11));
+		assertEquals(0, regel.resolve(terningsTrill));
 	}
 
+	// Tester for stor straight
+	
 	@Test
 	void harStorStraight() {
 
@@ -288,7 +313,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(6);
 
 		regel = new StorStraight();
-		assertEquals(20, regel.resolve(terningsTrill, 12));
+		assertEquals(20, regel.resolve(terningsTrill));
 	}
 
 	@Test
@@ -303,8 +328,10 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 
 		regel = new StorStraight();
-		assertEquals(0, regel.resolve(terningsTrill, 12));
+		assertEquals(0, regel.resolve(terningsTrill));
 	}
+	
+	// Tester for hus
 	
 	@Test
 	void harHus() {
@@ -315,7 +342,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 		terningsTrill.add(4);
 		regel = new Hus();
-		assertEquals(18, regel.resolve(terningsTrill, 13));
+		assertEquals(18, regel.resolve(terningsTrill));
 		
 	}
 	
@@ -327,7 +354,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 		terningsTrill.add(1);
 		regel = new Hus();
-		assertEquals(0, regel.resolve(terningsTrill, 13));
+		assertEquals(0, regel.resolve(terningsTrill));
 		
 	}
 
@@ -339,9 +366,11 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 		terningsTrill.add(1);
 		regel = new Hus();
-		assertEquals(0, regel.resolve(terningsTrill, 13));
+		assertEquals(0, regel.resolve(terningsTrill));
 		
 	}
+	
+	// Test for sjanse
 	
 	@Test
 	void sjanseRiktigSum() {
@@ -356,9 +385,11 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(4);
 
 		regel = new Sjanse();
-		assertEquals(24, regel.resolve(terningsTrill, 14));
+		assertEquals(24, regel.resolve(terningsTrill));
 
 	}
+	
+	// Tester for yatzy
 
 	@Test
 	void harYatzy() {
@@ -371,7 +402,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(5);
 
 		regel = new Yatzy();
-		assertEquals(50, regel.resolve(terningsTrill, 15));
+		assertEquals(50, regel.resolve(terningsTrill));
 	}
 
 	@Test
@@ -386,8 +417,11 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(5);
 
 		regel = new Yatzy();
-		assertEquals(0, regel.resolve(terningsTrill, 15));
+		assertEquals(0, regel.resolve(terningsTrill));
 	}
+	
+	
+	// Trenger ikke lenger, ville sjekke at jeg kunne hente metoder fra hashmappen og at det funket.
 	
 	@Test
 	void testRegelKlassen() {
@@ -400,7 +434,7 @@ public class MidlertidigRegelTest {
 		terningsTrill.add(5);
 		terningsTrill.add(5);
 		
-		assertEquals(20, regler.get(10).resolve(terningsTrill, 10));
+		assertEquals(20, regler.get(10).resolve(terningsTrill));
 		
 		
 	}

@@ -1,4 +1,4 @@
-package regler;
+package no.hvl.dat109.regler;
 
 import java.util.ArrayList;
 
@@ -15,13 +15,12 @@ public class EttPar implements IRegel {
 	 * Sjekker om terningene har ett par, og returnerer poengscoren fra dette.
 	 * 
 	 * @param terningkast: ArrayList<Integer> over terningkastene i runden
-	 * @param rundenr:     rundenr, men brukes ikke i denne metoden.
 	 * 
 	 * @return sum av to like om finnes. Tar høyest-verdi par først. Returnerer 0 om
 	 *         ingen par.
 	 */
 	@Override
-	public int resolve(ArrayList<Integer> terningkast, int rundenr) {
+	public int resolve(ArrayList<Integer> terningkast) {
 
 		for (int i = 6; i > 0; i--) {
 

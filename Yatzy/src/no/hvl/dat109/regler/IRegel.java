@@ -1,4 +1,4 @@
-package regler;
+package no.hvl.dat109.regler;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public interface IRegel {
 
-	public int resolve(ArrayList<Integer> terningkast, int rundenr);
+	public int resolve(ArrayList<Integer> terningkast);
 
 }
 

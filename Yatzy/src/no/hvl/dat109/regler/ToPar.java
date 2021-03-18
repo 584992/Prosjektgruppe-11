@@ -1,4 +1,4 @@
-package regler;
+package no.hvl.dat109.regler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,13 +17,12 @@ public class ToPar implements IRegel {
 	 * 
 	 * @param terningkast: ArrayList<Integer> liste over terningkast som vi leter
 	 *                     etter to par i.
-	 * @param rundenr:     brukes ikke i denne metoden.
 	 * 
 	 * @return poengsum : 0 om det ikke finnes 2 par, ellers summen av verdien til
 	 *         de to parene.
 	 */
 	@Override
-	public int resolve(ArrayList<Integer> terningkast, int rundenr) {
+	public int resolve(ArrayList<Integer> terningkast) {
 
 		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 

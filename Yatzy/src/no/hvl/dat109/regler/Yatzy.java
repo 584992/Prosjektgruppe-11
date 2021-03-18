@@ -1,4 +1,4 @@
-package regler;
+package no.hvl.dat109.regler;
 
 import java.util.ArrayList;
 
@@ -14,14 +14,13 @@ public class Yatzy implements IRegel {
 	 * ingen poeng om de ikke er det.
 	 * 
 	 * @param terningkast : ArrayList<Integer> - listen vi skal sjekke om har yatzy.
-	 * @param rundenr:    bruker ikke denne i denne metoden.
 	 * 
 	 * @return int sum: 50 poeng om brukeren har yatzy, 0 poeng om ikke.
 	 * 
 	 */
 
 	@Override
-	public int resolve(ArrayList<Integer> terningkast, int rundenr) {
+	public int resolve(ArrayList<Integer> terningkast) {
 
 		for (int i = 1; i < 7; i++) {
 			int j = i;

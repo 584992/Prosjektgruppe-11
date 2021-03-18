@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+import no.hvl.dat109.regler.IRegel;
+import no.hvl.dat109.regler.Regler;
 import no.hvl.dat109.spiller.Spiller;
-import regler.IRegel;
-import regler.Regler;
 
 /**
  * Hovedklasse som starter spillet
@@ -32,60 +32,6 @@ public class Yatzy {
 	public static void main(String[] args) {
 		startSpill();
 		System.out.println("SPILLET ER SLUTT");
-//		String spiller = "Emma";
-//
-//		ArrayList<Integer> terningSummer = new ArrayList<Integer>();
-//		ArrayList<Integer> terningTrill = new ArrayList<Integer>();
-//		Random rand = new Random();
-//		HashMap<Integer, IRegel> regler = new Regler().getRegler();
-//
-//		int totalsum = 0;
-//
-//		for (int i = 1; i < 16; i++) {
-//
-//			System.out.println("Runde " + i + "!");
-//			System.out.println(regler.get(i).getClass().getSimpleName());
-//
-//			for (int j = 0; j < 5; j++) {
-//				terningTrill.add(rand.nextInt(6) + 1);
-//			}
-//
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//
-//			System.out.println("Triller: " + terningTrill.toString() + ".");
-//			int sum = regler.get(i).resolve(terningTrill, i);
-//			terningSummer.add(i);
-//			totalsum += sum;
-//
-//			System.out.println("Sum blir..: " + sum + "!");
-//
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//
-//
-//			if (i == 6) {
-//
-//				System.out.println("F�r" + spiller + " bonus?");
-//				System.out.println(spiller + " har fra f�r av " + totalsum + " poeng, og f�r "
-//						+ new Bonuspoeng().resolve(terningSummer, -1) + " bonuspoeng!");
-//
-//			}
-//
-//			terningTrill.clear();
-//
-//		}
-//
-//		System.out.println(spiller + " f�r tilsammen " + new TotalPoengsum().resolve(terningSummer, 15));
-//		System.out.println("Godt jobbet, " + spiller + "!");
 
 	}
 
